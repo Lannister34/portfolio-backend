@@ -1,0 +1,9 @@
+pre-commit:
+  parallel: false
+  commands:
+    biome:
+      glob: "*.{ts,tsx,js,jsx,mjs,cjs,json,jsonc}"
+      run: npx biome check --staged --no-errors-on-unmatched
+    typecheck:
+      glob: "*.{ts,tsx}"
+      run: npm run typecheck
