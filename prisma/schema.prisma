@@ -6,3 +6,59 @@ generator client {
 datasource db {
   provider = "postgresql"
 }
+
+model Profile {
+  id          Int          @id @default(autoincrement())
+  name        String
+  description String
+  links       Json         @default("{}")
+  skills      Skill[]
+  experiences Experience[]
+  projects    Project[]
+}
+
+enum SkillCategory {
+  LANGUAGE
+  RUNTIME
+  FRAMEWORK
+  API
+  DATABASE
+  INFRASTRUCTURE
+  TOOLING
+}
+
+model Skill {
+  id        Int           @id @default(autoincrement())
+  name      String
+  category  SkillCategory
+  profileId Int
+  profile   Profile       @relation(fields: [profileId], references: [id], onDelete: Cascade)
+
+  @@unique([profileId, name])
+  @@index([profileId])
+}
+
+model Experience {
+  id           Int       @id @default(autoincrement())
+  company      String
+  position     String
+  startDate    DateTime  @db.Date
+  endDate      DateTime? @db.Date
+  achievements String[]
+  profileId    Int
+  profile      Profile   @relation(fields: [profileId], references: [id], onDelete: Cascade)
+
+  @@index([profileId])
+}
+
+model Project {
+  id            Int     @id @default(autoincrement())
+  name          String
+  description   String
+  url           String?
+  repositoryUrl String
+  profileId     Int
+  profile       Profile @relation(fields: [profileId], references: [id], onDelete: Cascade)
+
+  @@index([profileId])
+}
