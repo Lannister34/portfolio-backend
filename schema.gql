@@ -7,6 +7,7 @@ type Profile {
   id: ID!
   links: ProfileLinks!
   name: String!
+  skills: [Skill!]!
 }
 
 type ProfileLinks {
@@ -16,4 +17,19 @@ type ProfileLinks {
 
 type Query {
   profile: Profile!
+}
+
+type Skill {
+  category: SkillCategory!
+  name: String!
+}
+
+enum SkillCategory {
+  API
+  DATABASE
+  FRAMEWORK
+  INFRASTRUCTURE
+  LANGUAGE
+  RUNTIME
+  TOOLING
 }
