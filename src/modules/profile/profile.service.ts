@@ -1,7 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { Profile } from '../../generated/prisma/client.js';
+import type { Profile } from '../../generated/prisma/client.js';
 import { ProfileRepository } from './profile.repository.js';
-import { ProfileLinks, profileLinksSchema } from './profile-links.js';
 
 @Injectable()
 export class ProfileService {
@@ -13,9 +12,5 @@ export class ProfileService {
       throw new NotFoundException('Profile is not found');
     }
     return profile;
-  }
-
-  linksOf(profile: Profile): ProfileLinks {
-    return profileLinksSchema.parse(profile.links);
   }
 }

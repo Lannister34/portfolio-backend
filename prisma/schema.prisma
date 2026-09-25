@@ -1,6 +1,11 @@
 generator client {
-  provider = "prisma-client"
-  output   = "../src/generated/prisma"
+  provider            = "prisma-client"
+  output              = "../src/generated/prisma"
+  importFileExtension = "js"
+}
+
+generator json {
+  provider = "prisma-json-types-generator"
 }
 
 datasource db {
@@ -11,6 +16,7 @@ model Profile {
   id          Int          @id @default(autoincrement())
   name        String
   description String
+  /// [ProfileLinks]
   links       Json         @default("{}")
   skills      Skill[]
   experiences Experience[]
