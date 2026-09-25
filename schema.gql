@@ -2,8 +2,23 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Experience {
+  achievements: [String!]!
+  company: String!
+  endDate: DateTime
+  isCurrent: Boolean!
+  position: String!
+  startDate: DateTime!
+}
+
 type Profile {
   description: String!
+  experience: Experience!
   id: ID!
   links: ProfileLinks!
   name: String!

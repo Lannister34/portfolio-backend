@@ -5,6 +5,7 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { envSchema } from './config/env.js';
 import { graphqlOptions } from './config/graphql.js';
 import { PrismaModule } from './database/prisma.module.js';
+import { ExperienceModule } from './modules/experience/experience.module.js';
 import { ProfileModule } from './modules/profile/profile.module.js';
 import { SkillModule } from './modules/skill/skill.module.js';
 
@@ -15,6 +16,7 @@ import { SkillModule } from './modules/skill/skill.module.js';
     PrismaModule,
     ProfileModule,
     SkillModule,
+    ExperienceModule,
   ],
 })
 export class AppModule {}
