@@ -7,6 +7,7 @@ import { graphqlOptions } from './config/graphql.js';
 import { PrismaModule } from './database/prisma.module.js';
 import { ExperienceModule } from './modules/experience/experience.module.js';
 import { ProfileModule } from './modules/profile/profile.module.js';
+import { ProjectModule } from './modules/project/project.module.js';
 import { SkillModule } from './modules/skill/skill.module.js';
 
 @Module({
@@ -17,6 +18,7 @@ import { SkillModule } from './modules/skill/skill.module.js';
     ProfileModule,
     SkillModule,
     ExperienceModule,
+    ProjectModule,
   ],
 })
 export class AppModule {}

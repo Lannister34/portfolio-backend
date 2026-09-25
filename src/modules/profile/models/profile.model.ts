@@ -1,5 +1,6 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
 import { ExperienceModel } from '../../experience/models/experience.model.js';
+import { ProjectModel } from '../../project/models/project.model.js';
 import { SkillModel } from '../../skill/models/skill.model.js';
 import { ProfileLinksModel } from './profile-links.model.js';
 
@@ -22,4 +23,7 @@ export class ProfileModel {
 
   @Field(() => [ExperienceModel])
   experience!: ExperienceModel[];
+
+  @Field(() => [ProjectModel])
+  projects!: ProjectModel[];
 }

@@ -18,16 +18,24 @@ type Experience {
 
 type Profile {
   description: String!
-  experience: Experience!
+  experience: [Experience!]!
   id: ID!
   links: ProfileLinks!
   name: String!
+  projects: [Project!]!
   skills: [Skill!]!
 }
 
 type ProfileLinks {
   github: String
   linkedin: String
+}
+
+type Project {
+  description: String!
+  name: String!
+  repositoryUrl: String!
+  url: String
 }
 
 type Query {
