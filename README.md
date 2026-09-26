@@ -61,21 +61,13 @@ query {
 - - читаемость и поддерживаемость кода;
 - - корректную работу приложения после запуска с нуля.
 
-## Установка проекта
-
-```bash
-$ npm install
-```
-
 ## Запуск проекта
 
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+cp .env.example .env
+docker compose up --build
 ```
+
+Миграции и сид выполняются автоматически при старте контейнера.
+
+Apollo Sandbox: http://localhost:3000/graphql
