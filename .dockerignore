@@ -1,0 +1,11 @@
+.git
+.idea
+node_modules
+dist
+build
+coverage
+src/generated
+*.tsbuildinfo
+.env
+.env.*
+!.env.example

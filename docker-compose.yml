@@ -1,3 +1,5 @@
+x-database-url: &database-url postgresql://${POSTGRES_USER:-app}:${POSTGRES_PASSWORD:-app}@db:5432/${POSTGRES_DB:-portfolio}
+
 services:
   db:
     image: postgres:17-alpine
@@ -14,6 +16,21 @@ services:
       interval: 5s
       timeout: 5s
       retries: 10
+
+  app:
+    build:
+      context: .
+      args:
+        DATABASE_URL: *database-url
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+      DATABASE_URL: *database-url
+    ports:
+      - '${APP_PORT:-3000}:3000'
 
 volumes:
   db-data:
