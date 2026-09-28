@@ -4,7 +4,7 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 
 export const graphqlOptions: ApolloDriverConfig = {
   driver: ApolloDriver,
-  autoSchemaFile: join(process.cwd(), 'schema.gql'),
+  autoSchemaFile: process.env.NODE_ENV === 'production' ? true : join(process.cwd(), 'schema.gql'),
   sortSchema: true,
   graphiql: false,
   introspection: true,
